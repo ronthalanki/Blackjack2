@@ -1,4 +1,3 @@
 package blackjack;
 
-public class BlackjackTest {
-}
+public class BlackjackTest {}
