@@ -13,7 +13,7 @@ public class Deck {
   }
 
   public Card drawCard() {
-    return deck.remove(deck.lastIndexOf(deck));
+    return deck.remove(deck.size() - 1);
   }
 
   private void resetDeck() {
