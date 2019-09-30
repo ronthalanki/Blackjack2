@@ -9,11 +9,9 @@ import lombok.Getter;
 
 public abstract class Agent implements Comparable<Agent> {
   @Getter private final List<Card> hand;
-  private final boolean isPlaying;
 
   public Agent() {
     this.hand = new ArrayList<Card>();
-    this.isPlaying = true;
   }
 
   public void addCard(final Card c) {
@@ -24,11 +22,8 @@ public abstract class Agent implements Comparable<Agent> {
     return Util.getScore(hand);
   }
 
-  public boolean getIsPlaying() {
-    if (isPlaying && getScores().size() != 0) {
-      return true;
-    }
-    return false;
+  public boolean isPlaying() {
+    return getScores().size() != 0;
   }
 
   @Override

@@ -8,6 +8,6 @@ public class BotAgent extends Agent {
   private static final List<Integer> stopScores = Arrays.asList(16, 17, 18, 19, 20, 21);
 
   public boolean getNextCard() {
-    return getIsPlaying() && Collections.disjoint(stopScores, getScores());
+    return isPlaying() && Collections.disjoint(stopScores, getScores());
   }
 }
