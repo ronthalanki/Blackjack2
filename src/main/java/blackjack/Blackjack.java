@@ -57,6 +57,13 @@ public class Blackjack {
     return String.format(template, agent, agent.getHand(), agent.getScores());
   }
 
+  public static void clearScreen(final Scanner scan) {
+    System.out.println("To continue, press any letter");
+    scan.next();
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
+  }
+
   public static void main(String[] args) {
     final Blackjack game = Blackjack.builder().deck(new Deck(new Random(2))).build();
     final Scanner scan = new Scanner(System.in);
@@ -68,11 +75,14 @@ public class Blackjack {
     }
 
     System.out.println(game.getState());
+    clearScreen(scan);
 
+    System.out.println(game.getAgentState(game.getPlayer()));
     while (game.getPlayer().getNextCard(scan)) {
       game.getPlayer().addCard(game.getDeck().drawCard());
       System.out.println(game.getAgentState(game.getPlayer()));
     }
+    clearScreen(scan);
 
     for (final BotAgent bot : game.getAllBots()) {
       while (bot.getNextCard()) {
