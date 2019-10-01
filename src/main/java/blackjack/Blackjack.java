@@ -68,16 +68,21 @@ public class Blackjack {
     final Blackjack game = Blackjack.builder().deck(new Deck(new Random(2))).build();
     final Scanner scan = new Scanner(System.in);
 
+    System.out.println("Welcome to Blackjack!");
+    clearScreen(scan);
+
     for (final Agent agent : game.getAllAgents()) {
       for (int i = 0; i < 2; i++) {
         agent.addCard(game.getDeck().drawCard());
       }
     }
 
+    System.out.println("Here are everyone's cards");
     System.out.println(game.getState());
     clearScreen(scan);
 
     System.out.println(game.getAgentState(game.getPlayer()));
+    System.out.println("If you would like another card, press 1. Otherwise, press 0");
     while (game.getPlayer().getNextCard(scan)) {
       game.getPlayer().addCard(game.getDeck().drawCard());
       System.out.println(game.getAgentState(game.getPlayer()));
@@ -93,9 +98,9 @@ public class Blackjack {
     System.out.println(game.getState());
 
     if (game.getDealer().compareTo(game.getPlayer()) == 1) {
-      System.out.println("Loser");
+      System.out.println("You lost.");
     } else {
-      System.out.println("Winner");
+      System.out.println("You Win!");
     }
   }
 }
