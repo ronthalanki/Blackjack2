@@ -65,7 +65,7 @@ public class Blackjack {
   }
 
   public static void main(String[] args) {
-    final Blackjack game = Blackjack.builder().deck(new Deck(new Random(2))).build();
+    final Blackjack game = Blackjack.builder().deck().build();
     final Scanner scan = new Scanner(System.in);
 
     System.out.println("Welcome to Blackjack!");
